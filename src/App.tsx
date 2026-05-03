@@ -1,4 +1,4 @@
-import { useEffect, useMemo, useRef, useState, type ReactNode } from 'react'
+import { useEffect, useMemo, useRef, useState } from 'react'
 import { motion } from 'framer-motion'
 import OpenSeadragon from 'openseadragon'
 import {
@@ -89,14 +89,12 @@ function App() {
   const [sceneId, setSceneId] = useState<SlideId>(SLIDES[0].id)
   const [selectedHotspotId, setSelectedHotspotId] = useState(SLIDES[0].hotspots[0].id)
   const [running, setRunning] = useState(true)
-  const [zoom, setZoom] = useState(1.6)
   const [focus, setFocus] = useState(0.9)
   const [light, setLight] = useState(0.84)
   const [tick, setTick] = useState(0)
   const [quizAnswers, setQuizAnswers] = useState<Record<number, number | undefined>>({})
   const [answered, setAnswered] = useState<Record<number, boolean>>({})
   const [markerPositions, setMarkerPositions] = useState<Record<string, MarkerPosition>>({})
-  const [homeZoom, setHomeZoom] = useState(1)
   const viewerHostRef = useRef<HTMLDivElement | null>(null)
   const viewerRef = useRef<OpenSeadragon.Viewer | null>(null)
   const markerFrameRef = useRef<number | null>(null)
@@ -132,7 +130,7 @@ function App() {
       showNavigator: false,
       showRotationControl: false,
       showFullPageControl: false,
-      maxZoomPixelRatio: 8,
+      maxZoomPixelRatio: 2,
       visibilityRatio: 0.82,
       constrainDuringPan: true,
       animationTime: 0.55,
@@ -141,15 +139,15 @@ function App() {
       gestureSettingsMouse: {
         clickToZoom: false,
         dblClickToZoom: false,
-        scrollToZoom: true,
-        pinchToZoom: true,
+        scrollToZoom: false,
+        pinchToZoom: false,
         dragToPan: true,
       },
       gestureSettingsTouch: {
         clickToZoom: false,
         dblClickToZoom: false,
         scrollToZoom: false,
-        pinchToZoom: true,
+        pinchToZoom: false,
         dragToPan: true,
       },
     })
@@ -194,10 +192,7 @@ function App() {
     const handleOpen = () => {
       const instance = viewerRef.current
       if (!instance) return
-      const nextHome = instance.viewport.getHomeZoom() || 1
-      setHomeZoom(nextHome)
       instance.viewport.goHome(true)
-      instance.viewport.zoomTo(nextHome * zoom, undefined, true)
       refreshMarkers()
     }
 
@@ -214,14 +209,7 @@ function App() {
       viewer.destroy()
       viewerRef.current = null
     }
-  }, [scene, zoom])
-
-  useEffect(() => {
-    const viewer = viewerRef.current
-    if (!viewer || !homeZoom) return
-    const nextZoom = Math.max(1, zoom)
-    viewer.viewport.zoomTo(homeZoom * nextZoom, viewer.viewport.getCenter(), true)
-  }, [homeZoom, zoom])
+  }, [scene])
 
   useEffect(() => {
     const viewer = viewerRef.current
@@ -243,7 +231,6 @@ function App() {
     const nextScene = SLIDES.find((item) => item.id === nextSceneId)
     setSceneId(nextSceneId)
     setSelectedHotspotId(nextScene?.hotspots[0].id ?? SLIDES[0].hotspots[0].id)
-    setZoom(1.35)
     setMarkerPositions({})
   }
 
@@ -259,7 +246,6 @@ function App() {
     )
     const viewportPoint = viewer.viewport.imageToViewportCoordinates(imagePoint)
     viewer.viewport.panTo(viewportPoint, true)
-    viewer.viewport.zoomTo(homeZoom * zoom * 1.06, viewportPoint, true)
   }
 
   const setAnswer = (index: number, answer: number) => {
@@ -283,7 +269,7 @@ function App() {
                   Veja a lâmina como num microscópio de verdade.
                 </h1>
                 <p className="max-w-3xl text-sm leading-6 text-slate-300 sm:text-base">
-                  Arraste a lâmina, dê zoom, ajuste o foco e toque nas estruturas. A cena da cebola foi pensada para
+                  Arraste a lâmina, ajuste o foco e toque nas estruturas. A cena da cebola foi pensada para
                   ficar com cara de lâmina escaneada, como nos arquivos de *whole slide imaging*.
                 </p>
               </div>
@@ -292,7 +278,7 @@ function App() {
             <div className="grid grid-cols-2 gap-3 sm:grid-cols-4 lg:min-w-[430px]">
               <StatPill icon={<Trees size={16} />} label="Vegetais" value={String(PLANT_COUNT)} />
               <StatPill icon={<Atom size={16} />} label="Animais" value={String(ANIMAL_COUNT)} />
-              <StatPill icon={<ScanSearch size={16} />} label="Zoom real" value="OSD" />
+              <StatPill icon={<ScanSearch size={16} />} label="Vista real" value="OSD" />
               <StatPill icon={<Sparkles size={16} />} label="Toque" value="Hotspots" />
             </div>
           </div>
@@ -335,10 +321,6 @@ function App() {
                         <div className="microscope-glow" />
                         <div
                           className="microscope-view-wrap"
-                          style={{
-                            transform: `scale(${1 + (zoom - 1) * 0.08})`,
-                            transition: 'transform 220ms ease',
-                          }}
                         >
                           <div className="microscope-sweep" style={{ transform: `translateY(${(sweep * 130) - 15}%) rotate(-10deg)` }} />
                           <div className="microscope-vignette" />
@@ -372,35 +354,6 @@ function App() {
                     </div>
                   </div>
 
-                  <div className="grid gap-3 sm:grid-cols-3">
-                    <RangeControl
-                      label="Ampliação"
-                      value={zoom}
-                      min={1}
-                      max={3.2}
-                      step={0.01}
-                      icon={<ScanSearch size={14} />}
-                      onChange={setZoom}
-                    />
-                    <RangeControl
-                      label="Foco"
-                      value={focus}
-                      min={0.1}
-                      max={1}
-                      step={0.01}
-                      icon={<Focus size={14} />}
-                      onChange={setFocus}
-                    />
-                    <RangeControl
-                      label="Luz"
-                      value={light}
-                      min={0.2}
-                      max={1}
-                      step={0.01}
-                      icon={<SunMedium size={14} />}
-                      onChange={setLight}
-                    />
-                  </div>
                 </div>
 
                 <div className="flex flex-col gap-4">
@@ -636,36 +589,6 @@ function HotspotCard({ scene, hotspot, onFocus }: { scene: Slide; hotspot: Hotsp
         </button>
       </div>
     </div>
-  )
-}
-
-function RangeControl({
-  label,
-  value,
-  min,
-  max,
-  step,
-  icon,
-  onChange,
-}: {
-  label: string
-  value: number
-  min: number
-  max: number
-  step: number
-  icon: ReactNode
-  onChange: (value: number) => void
-}) {
-  return (
-    <label className="block rounded-[20px] border border-white/10 bg-white/5 p-3">
-      <div className="mb-2 flex items-center justify-between gap-3 text-sm text-slate-200">
-        <span className="flex items-center gap-2 font-medium text-white">
-          {icon} {label}
-        </span>
-        <span className="text-xs text-slate-400">{value.toFixed(2)}</span>
-      </div>
-      <input type="range" min={min} max={max} step={step} value={value} onChange={(event) => onChange(Number(event.target.value))} />
-    </label>
   )
 }
 
