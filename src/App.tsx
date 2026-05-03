@@ -136,35 +136,35 @@ const scenes: Scene[] = [
   },
   {
     id: 'onion-stained',
-    title: 'Cebola corada no microscópio',
-    subtitle: 'A coloração deixa núcleo e paredes ainda mais fáceis de enxergar',
+    title: 'Estômatos de chicória',
+    subtitle: 'Poros e células-guarda visíveis em uma lâmina vegetal real',
     type: 'plant',
     slide: 'onion-stained',
-    intro: 'Aqui a lâmina está corada. O contraste aumenta e fica mais fácil perceber o núcleo e o contorno das células.',
-    environment: 'coloração morna · contraste alto · estrutura bem visível',
-    teachingPoint: 'Colorantes ajudam a destacar estruturas internas que seriam difíceis de notar na lâmina sem cor.',
-    note: 'Perfeita para comparar com a cebola fresca e discutir preparo de lâmina.',
+    intro: 'Aqui vemos a superfície da folha, com estômatos e células-guarda bem definidos.',
+    environment: 'folha em corte superficial · contraste alto · estômatos nítidos',
+    teachingPoint: 'Os estômatos controlam a troca de gases e a perda de água na planta.',
+    note: 'Boa para discutir transpiração, respiração e fotossíntese.',
     accent: '#c4b5fd',
     gradient: 'linear-gradient(135deg, rgba(124,58,237,0.95), rgba(14,165,233,0.36) 46%, rgba(28,12,53,0.96))',
     symbol: '🧪',
-    hotpotHint: 'Com a coração, o núcleo ganha destaque — e a parede fica muito mais nítida.',
+    hotpotHint: 'Toque no poro e nas células-guarda para ver como a folha regula trocas.',
     hotspots: [
       {
-        id: 'wall',
-        label: 'Parede celular corada',
-        details: 'A parede celular permanece rígida e aparece muito bem com a coloração.',
-        summary: 'Mantém a forma da célula vegetal.',
+        id: 'pore',
+        label: 'Estômato',
+        details: 'O estômato é o poro por onde acontecem as trocas de gases.',
+        summary: 'Entrada e saída de gases e vapor de água.',
         x: 0.34,
         y: 0.34,
         radius: 0.032,
         color: '#fda4af',
-        icon: '▣',
+        icon: '◉',
       },
       {
-        id: 'nucleus',
-        label: 'Núcleo corado',
-        details: 'Em lâminas coradas, o núcleo costuma ficar mais evidente para estudo.',
-        summary: 'Organela ligada ao controle e ao DNA.',
+        id: 'guard-cells',
+        label: 'Células-guarda',
+        details: 'Elas controlam a abertura e o fechamento do estômato.',
+        summary: 'Regulam o poro da folha.',
         x: 0.58,
         y: 0.48,
         radius: 0.03,
@@ -172,10 +172,10 @@ const scenes: Scene[] = [
         icon: '◎',
       },
       {
-        id: 'cytoplasm',
-        label: 'Citoplasma',
-        details: 'É a região “gelatinosa” onde as organelas ficam suspensas.',
-        summary: 'Meio interno da célula.',
+        id: 'epidermis',
+        label: 'Epiderme foliar',
+        details: 'A epiderme reveste a folha e ajuda na proteção.',
+        summary: 'Camada protetora da folha.',
         x: 0.47,
         y: 0.58,
         radius: 0.024,
@@ -183,10 +183,10 @@ const scenes: Scene[] = [
         icon: '◍',
       },
       {
-        id: 'vacuole',
-        label: 'Vacúolo central',
-        details: 'O vacúolo ocupa boa parte do interior e ajuda na pressão interna da célula.',
-        summary: 'Reserva de água e sais.',
+        id: 'opening',
+        label: 'Abertura do poro',
+        details: 'Quando o poro abre, a folha consegue trocar gases com o ambiente.',
+        summary: 'Entrada/saída de ar e vapor.',
         x: 0.52,
         y: 0.52,
         radius: 0.042,
@@ -258,35 +258,35 @@ const scenes: Scene[] = [
   },
   {
     id: 'cheek-stained',
-    title: 'Epitélio bucal corado',
-    subtitle: 'A coloração ajuda a ver núcleos, membranas e o arranjo do tecido',
+    title: 'Esfregaço de sangue',
+    subtitle: 'Hemácias e outras células sanguíneas em alta ampliação',
     type: 'animal',
     slide: 'cheek-stained',
-    intro: 'Com a coloração, o núcleo fica muito mais evidente e a lâmina ganha contraste para estudo básico.',
-    environment: 'coloração azulada · maior contraste · observação didática',
-    teachingPoint: 'As lâminas coradas ajudam o aluno a reconhecer núcleo, membrana e formato das células animais.',
-    note: 'Ótima para fazer a comparação final com a lâmina de cebola.',
+    intro: 'Uma lâmina animal com hemácias espalhadas e forte contraste.',
+    environment: 'esfregaço sanguíneo · alta ampliação · células bem contrastadas',
+    teachingPoint: 'O sangue ajuda a mostrar células sem parede celular e com formatos variados.',
+    note: 'Ótimo para comparar com a lâmina vegetal.',
     accent: '#fca5a5',
     gradient: 'linear-gradient(135deg, rgba(239,68,68,0.95), rgba(168,85,247,0.30) 46%, rgba(44,14,18,0.96))',
     symbol: '🩵',
-    hotpotHint: 'Nesta versão, o núcleo surge com contraste maior — excelente para revisão rápida.',
+    hotpotHint: 'Toque nas hemácias e no leucócito para comparar os elementos do sangue.',
     hotspots: [
       {
-        id: 'membrane',
-        label: 'Membrana plasmática',
-        details: 'A membrana continua sendo a fronteira seletiva da célula animal.',
-        summary: 'Controle de entrada e saída.',
+        id: 'rbc',
+        label: 'Hemácia',
+        details: 'As hemácias transportam oxigênio e costumam aparecer como discos claros no esfregaço.',
+        summary: 'Célula vermelha do sangue.',
         x: 0.42,
         y: 0.36,
         radius: 0.028,
         color: '#7dd3fc',
-        icon: '⋯',
+        icon: '◉',
       },
       {
-        id: 'nucleus',
-        label: 'Núcleo corado',
-        details: 'A coloração destaca o núcleo como área mais escura e fácil de reconhecer.',
-        summary: 'Guarda o DNA e coordena as atividades.',
+        id: 'wbc',
+        label: 'Leucócito',
+        details: 'O leucócito é a célula de defesa do organismo.',
+        summary: 'Participa da imunidade.',
         x: 0.60,
         y: 0.52,
         radius: 0.032,
@@ -294,10 +294,10 @@ const scenes: Scene[] = [
         icon: '◎',
       },
       {
-        id: 'cytoplasm',
-        label: 'Citoplasma',
-        details: 'O citoplasma dá sustentação interna e preenche a célula.',
-        summary: 'Ambiente interno celular.',
+        id: 'plasma',
+        label: 'Plasma',
+        details: 'É a parte líquida do sangue, onde as células ficam suspensas.',
+        summary: 'Meio líquido do sangue.',
         x: 0.50,
         y: 0.60,
         radius: 0.024,
@@ -306,9 +306,9 @@ const scenes: Scene[] = [
       },
       {
         id: 'cluster',
-        label: 'Tecido em conjunto',
-        details: 'No tecido bucal, várias células aparecem agrupadas e sobrepostas.',
-        summary: 'Organização do tecido epitelial.',
+        label: 'Agrupamento de hemácias',
+        details: 'No esfregaço, várias hemácias aparecem próximas umas das outras.',
+        summary: 'Campos cheios de células do sangue.',
         x: 0.69,
         y: 0.38,
         radius: 0.03,
@@ -694,6 +694,12 @@ function App() {
                       <span className="mt-1 block text-cyan-50/85">{selectedHotspot.details}</span>
                     </div>
                     <p className="mt-3 text-sm leading-6 text-slate-300">{scene.note}</p>
+                    <p className="mt-3 text-xs text-slate-400">
+                      Fonte real: {realSlideUrls[scene.slide]?.source} ·{' '}
+                      <a className="text-cyan-200 underline decoration-cyan-300/50 underline-offset-2" href={realSlideUrls[scene.slide]?.url} target="_blank" rel="noreferrer">
+                        abrir a imagem original
+                      </a>
+                    </p>
                   </div>
 
                   <div className="rounded-[24px] border border-white/10 bg-white/5 p-4">
@@ -813,219 +819,41 @@ function App() {
         </section>
 
         <footer className="rounded-[28px] border border-white/10 bg-slate-950/60 p-4 text-xs leading-6 text-slate-400 backdrop-blur">
-          Feito para celular e lousa digital. Se você estava pensando naquele arquivo de lâmina escaneada, os nomes
-          mais comuns são <span className="text-slate-200">.mrxs</span>, <span className="text-slate-200">.svs</span>,
-          <span className="text-slate-200"> .ndpi</span> ou outros formatos de *whole slide imaging*.
+          Feito para celular e lousa digital. O aluno só consome uma lista curada de lâminas reais; se depois quiser abrir
+          arquivos <span className="text-slate-200">.mrxs</span>, <span className="text-slate-200">.svs</span>,
+          <span className="text-slate-200"> .ndpi</span> ou outros formatos de *whole slide imaging*;
+          eles entram convertidos como tiles no servidor.
         </footer>
       </main>
     </div>
   )
 }
 
-function buildSlideSvg(scene: Scene) {
-  switch (scene.slide) {
-    case 'onion-fresh':
-      return buildOnionSlide({ stained: false, label: scene.title })
-    case 'onion-stained':
-      return buildOnionSlide({ stained: true, label: scene.title })
-    case 'cheek-fresh':
-      return buildCheekSlide({ stained: false, label: scene.title })
-    case 'cheek-stained':
-      return buildCheekSlide({ stained: true, label: scene.title })
-    default:
-      return buildOnionSlide({ stained: false, label: scene.title })
-  }
-}
-
-function buildOnionSlide({ stained, label }: { stained: boolean; label: string }) {
-  const rows = 10
-  const cols = 12
-  const cellW = 320
-  const cellH = 250
-  const startX = 110
-  const startY = 100
-  const bgA = stained ? '#35114f' : '#f7efff'
-  const bgB = stained ? '#8b5cf6' : '#f3d7ff'
-  const bgC = stained ? '#13071f' : '#ead7ff'
-  const walls = stained ? 'rgba(245, 245, 255, 0.88)' : 'rgba(35, 24, 52, 0.82)'
-  const inner = stained ? 'rgba(168, 85, 247, 0.22)' : 'rgba(233, 213, 255, 0.2)'
-  const nucleus = stained ? 'rgba(20, 184, 166, 0.92)' : 'rgba(129, 140, 248, 0.92)'
-  const cells: string[] = []
-
-  for (let row = 0; row < rows; row += 1) {
-    for (let col = 0; col < cols; col += 1) {
-      const n = row * cols + col + 1
-      const jitterX = (seeded(n) - 0.5) * 18
-      const jitterY = (seeded(n + 13) - 0.5) * 12
-      const x = startX + col * cellW + (row % 2 === 0 ? 0 : 20) + jitterX
-      const y = startY + row * cellH + jitterY
-      const w = cellW - 14 + (seeded(n + 5) - 0.5) * 18
-      const h = cellH - 14 + (seeded(n + 9) - 0.5) * 16
-      const rx = 10 + seeded(n + 17) * 10
-      const showNucleus = stained || n % 3 !== 0
-      const nucleusX = w * (0.58 - seeded(n + 21) * 0.08)
-      const nucleusY = h * (0.45 + seeded(n + 29) * 0.1)
-      const nucleusR = 10 + seeded(n + 31) * 12
-      cells.push(`
-        <g transform="translate(${x} ${y}) rotate(${(seeded(n + 35) - 0.5) * 2})">
-          <rect x="0" y="0" width="${w}" height="${h}" rx="${rx}" fill="${stained ? 'rgba(99, 102, 241, 0.22)' : 'rgba(255, 255, 255, 0.58)'}" stroke="${walls}" stroke-width="6"/>
-          <rect x="6" y="6" width="${Math.max(1, w - 12)}" height="${Math.max(1, h - 12)}" rx="${Math.max(8, rx - 2)}" fill="${inner}" opacity="0.86"/>
-          <ellipse cx="${w * 0.5}" cy="${h * 0.54}" rx="${w * 0.28}" ry="${h * 0.24}" fill="${stained ? 'rgba(125, 211, 252, 0.12)' : 'rgba(255, 255, 255, 0.22)'}"/>
-          ${showNucleus ? `<circle cx="${nucleusX}" cy="${nucleusY}" r="${nucleusR}" fill="${nucleus}" opacity="0.96"/>` : ''}
-          <circle cx="${w * 0.62}" cy="${h * 0.42}" r="${Math.max(3, nucleusR * 0.2)}" fill="rgba(255,255,255,0.46)" opacity="0.58"/>
-        </g>
-      `)
-    }
-  }
-
-  return `
-    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 ${SLIDE_WIDTH} ${SLIDE_HEIGHT}">
-      <defs>
-        <linearGradient id="bg" x1="0" y1="0" x2="1" y2="1">
-          <stop offset="0%" stop-color="${bgA}"/>
-          <stop offset="55%" stop-color="${bgB}"/>
-          <stop offset="100%" stop-color="${bgC}"/>
-        </linearGradient>
-        <radialGradient id="vignette" cx="50%" cy="46%" r="64%">
-          <stop offset="0%" stop-color="rgba(255,255,255,0.28)"/>
-          <stop offset="55%" stop-color="rgba(17,24,39,0.04)"/>
-          <stop offset="100%" stop-color="rgba(2,6,23,0.7)"/>
-        </radialGradient>
-        <filter id="noise">
-          <feTurbulence type="fractalNoise" baseFrequency="0.65" numOctaves="2" stitchTiles="stitch"/>
-          <feColorMatrix type="saturate" values="0.18"/>
-          <feComponentTransfer>
-            <feFuncA type="table" tableValues="0 0.1"/>
-          </feComponentTransfer>
-        </filter>
-      </defs>
-      <rect width="100%" height="100%" fill="url(#bg)"/>
-      <rect width="100%" height="100%" filter="url(#noise)" opacity="0.16"/>
-      ${cells.join('\n')}
-      <rect width="100%" height="100%" fill="url(#vignette)"/>
-      <text x="160" y="2740" fill="rgba(255,255,255,0.58)" font-family="Inter, Arial, sans-serif" font-size="76" font-weight="700">${escapeXml(label)}</text>
-      <text x="160" y="2838" fill="rgba(255,255,255,0.40)" font-family="Inter, Arial, sans-serif" font-size="38">epiderme de cebola • visão microscópica virtual</text>
-    </svg>
-  `
-}
-
-function buildCheekSlide({ stained, label }: { stained: boolean; label: string }) {
-  const rows = 9
-  const cols = 11
-  const cellW = 360
-  const cellH = 268
-  const startX = 160
-  const startY = 130
-  const cells: string[] = []
-
-  for (let row = 0; row < rows; row += 1) {
-    for (let col = 0; col < cols; col += 1) {
-      const n = row * cols + col + 1
-      const s = seeded(n + 200)
-      const x = startX + col * (cellW - 28) + (row % 2 === 0 ? 0 : 54) + Math.sin(n * 0.5) * 8
-      const y = startY + row * (cellH - 18) + Math.cos(n * 0.6) * 12
-      const rx = 86 + s * 40
-      const ry = 64 + seeded(n + 9) * 24
-      const w = cellW - 18 + seeded(n + 12) * 38
-      const h = cellH - 12 + seeded(n + 17) * 34
-      const nucleusX = w * (0.52 + seeded(n + 31) * 0.1)
-      const nucleusY = h * (0.44 + seeded(n + 41) * 0.08)
-      const nucleusR = 20 + seeded(n + 37) * 18
-      cells.push(`
-        <g transform="translate(${x} ${y}) rotate(${(seeded(n + 53) - 0.5) * 8})">
-          <ellipse cx="${w * 0.5}" cy="${h * 0.5}" rx="${rx}" ry="${ry}" fill="${stained ? 'rgba(244, 114, 182, 0.22)' : 'rgba(251, 207, 232, 0.16)'}" stroke="rgba(255,255,255,0.22)" stroke-width="2.4"/>
-          <ellipse cx="${w * 0.5}" cy="${h * 0.5}" rx="${rx - 10}" ry="${ry - 7}" fill="${stained ? 'rgba(99, 102, 241, 0.12)' : 'rgba(255,255,255,0.06)'}"/>
-          <circle cx="${nucleusX}" cy="${nucleusY}" r="${nucleusR}" fill="${stained ? 'rgba(37, 99, 235, 0.7)' : 'rgba(76, 29, 149, 0.56)'}"/>
-          <circle cx="${nucleusX + 5}" cy="${nucleusY - 4}" r="${Math.max(4, nucleusR * 0.25)}" fill="rgba(255,255,255,0.42)" opacity="0.55"/>
-        </g>
-      `)
-    }
-  }
-
-  return `
-    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 ${SLIDE_WIDTH} ${SLIDE_HEIGHT}">
-      <defs>
-        <linearGradient id="bg" x1="0" y1="0" x2="1" y2="1">
-          <stop offset="0%" stop-color="${stained ? '#fee2e2' : '#fff1f2'}"/>
-          <stop offset="55%" stop-color="${stained ? '#fda4af' : '#fecdd3'}"/>
-          <stop offset="100%" stop-color="${stained ? '#7f1d1d' : '#9d174d'}"/>
-        </linearGradient>
-        <radialGradient id="vignette" cx="50%" cy="48%" r="66%">
-          <stop offset="0%" stop-color="rgba(255,255,255,0.22)"/>
-          <stop offset="70%" stop-color="rgba(17,24,39,0.12)"/>
-          <stop offset="100%" stop-color="rgba(2,6,23,0.74)"/>
-        </radialGradient>
-        <filter id="noise">
-          <feTurbulence type="fractalNoise" baseFrequency="0.75" numOctaves="2" stitchTiles="stitch"/>
-          <feColorMatrix type="saturate" values="0.22"/>
-          <feComponentTransfer>
-            <feFuncA type="table" tableValues="0 0.12"/>
-          </feComponentTransfer>
-        </filter>
-        <filter id="softBlur" x="-20%" y="-20%" width="140%" height="140%">
-          <feGaussianBlur stdDeviation="12"/>
-        </filter>
-      </defs>
-      <rect width="100%" height="100%" fill="url(#bg)"/>
-      <rect width="100%" height="100%" filter="url(#noise)" opacity="0.28"/>
-      <ellipse cx="2070" cy="1540" rx="1520" ry="1120" fill="${stained ? 'rgba(255,255,255,0.08)' : 'rgba(255,255,255,0.14)'}" filter="url(#softBlur)" opacity="0.62"/>
-      ${cells.join('\n')}
-      <rect width="100%" height="100%" fill="url(#vignette)"/>
-      <text x="160" y="2740" fill="rgba(255,255,255,0.58)" font-family="Inter, Arial, sans-serif" font-size="76" font-weight="700">${escapeXml(label)}</text>
-      <text x="160" y="2838" fill="rgba(255,255,255,0.40)" font-family="Inter, Arial, sans-serif" font-size="38">epitélio bucal • visão microscópica virtual</text>
-    </svg>
-  `
+const realSlideUrls: Record<Scene['slide'], { label: string; url: string; source: string }> = {
+  'onion-fresh': {
+    label: 'Epiderme de cebola',
+    url: 'https://upload.wikimedia.org/wikipedia/commons/3/30/Onion_Epidermis_Cells_W.M._40x_-_294.jpg',
+    source: 'Wikimedia Commons',
+  },
+  'onion-stained': {
+    label: 'Estômatos de chicória',
+    url: 'https://upload.wikimedia.org/wikipedia/commons/8/86/Chicory_Stomata.jpg',
+    source: 'Wikimedia Commons',
+  },
+  'cheek-fresh': {
+    label: 'Epitélio bucal',
+    url: 'https://upload.wikimedia.org/wikipedia/commons/4/4b/Human_cheek_cells_from_science_class.jpg',
+    source: 'Wikimedia Commons',
+  },
+  'cheek-stained': {
+    label: 'Esfregaço de sangue',
+    url: 'https://upload.wikimedia.org/wikipedia/commons/f/fd/Blood_under_microscope.jpg',
+    source: 'Wikimedia Commons',
+  },
 }
 
 function useSlideImageUrl(scene: Scene) {
-  const slideSvg = useMemo(() => buildSlideSvg(scene), [scene])
-  const [url, setUrl] = useState('')
-
-  useEffect(() => {
-    let cancelled = false
-    const svgUrl = `data:image/svg+xml;charset=utf-8,${encodeURIComponent(slideSvg)}`
-    const image = new Image()
-
-    image.onload = () => {
-      if (cancelled) return
-      const canvas = document.createElement('canvas')
-      canvas.width = SLIDE_WIDTH
-      canvas.height = SLIDE_HEIGHT
-      const context = canvas.getContext('2d')
-      if (!context) {
-        setUrl(svgUrl)
-        return
-      }
-      context.drawImage(image, 0, 0, SLIDE_WIDTH, SLIDE_HEIGHT)
-      setUrl(canvas.toDataURL('image/png'))
-    }
-
-    image.onerror = () => {
-      if (!cancelled) setUrl(svgUrl)
-    }
-
-    image.src = svgUrl
-
-    return () => {
-      cancelled = true
-    }
-  }, [slideSvg])
-
-  return url
-}
-
-function seeded(seed: number) {
-  const x = Math.sin(seed * 12.9898) * 43758.5453
-  return x - Math.floor(x)
-}
-
-function escapeXml(value: string) {
-  return value
-    .replaceAll('&', '&amp;')
-    .replaceAll('<', '&lt;')
-    .replaceAll('>', '&gt;')
-    .replaceAll('"', '&quot;')
-    .replaceAll("'", '&apos;')
+  return realSlideUrls[scene.slide]?.url ?? realSlideUrls['onion-fresh'].url
 }
 
 function ScenePicker({ current, onPick }: { current: string; onPick: (sceneId: string) => void }) {
