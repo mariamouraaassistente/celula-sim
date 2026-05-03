@@ -238,8 +238,8 @@ svg {
   .hotspot {
     position: absolute;
     pointer-events: auto;
-    width: 22px;
-    height: 22px;
+    width: 18px;
+    height: 18px;
     border-radius: 999px;
     border: 2px solid currentColor;
     background: transparent;
@@ -251,7 +251,7 @@ svg {
     transition: transform 180ms ease, box-shadow 180ms ease, opacity 180ms ease, width 180ms ease, height 180ms ease;
     cursor: pointer;
     z-index: 11;
-    opacity: 0.82;
+    opacity: 0.68;
   }
 
   .hotspot::before {
@@ -265,10 +265,10 @@ svg {
   .hotspot::after {
     content: '';
     position: absolute;
-    inset: 5px;
+    inset: 6px;
     border-radius: 999px;
     background: currentColor;
-    opacity: 0.88;
+    opacity: 0.74;
     box-shadow: 0 0 0 2px rgba(2, 6, 23, 0.28) inset;
   }
 
@@ -314,13 +314,13 @@ svg {
 
 @media (max-width: 640px) {
   .hotspot {
-    width: 18px;
-    height: 18px;
+    width: 14px;
+    height: 14px;
   }
 
   .hotspot-active {
-    width: 24px;
-    height: 24px;
+    width: 20px;
+    height: 20px;
   }
 }
 
