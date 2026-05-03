@@ -355,17 +355,12 @@ function App() {
                                   style={{
                                     left: `${position.x}px`,
                                     top: `${position.y}px`,
-                                    width: `${Math.max(34, hotspot.radius * 4100)}px`,
-                                    height: `${Math.max(34, hotspot.radius * 4100)}px`,
                                     borderColor: hotspot.color,
-                                    boxShadow: selected
-                                      ? `0 0 0 8px rgba(255,255,255,0.08), 0 0 30px ${hotspot.color}66`
-                                      : `0 0 0 0 transparent`,
                                   }}
                                   onClick={() => focusHotspot(hotspot.id)}
                                   aria-label={hotspot.label}
                                 >
-                                  <span>{hotspot.icon}</span>
+                                  {selected ? <span>{hotspot.icon}</span> : <span aria-hidden="true" />}
                                 </button>
                               )
                             })}
