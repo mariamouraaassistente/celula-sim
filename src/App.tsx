@@ -89,6 +89,7 @@ function App() {
   const [sceneId, setSceneId] = useState<SlideId>(SLIDES[0].id)
   const [selectedHotspotId, setSelectedHotspotId] = useState(SLIDES[0].hotspots[0].id)
   const [running, setRunning] = useState(true)
+  const [zoomLevel, setZoomLevel] = useState(1)
   const [focus, setFocus] = useState(0.9)
   const [light, setLight] = useState(0.84)
   const [tick, setTick] = useState(0)
@@ -98,6 +99,7 @@ function App() {
   const viewerHostRef = useRef<HTMLDivElement | null>(null)
   const viewerRef = useRef<OpenSeadragon.Viewer | null>(null)
   const markerFrameRef = useRef<number | null>(null)
+  const [homeZoom, setHomeZoom] = useState(1)
   const scene = useMemo(() => SLIDES.find((item) => item.id === sceneId) ?? SLIDES[0], [sceneId])
   const selectedHotspot = useMemo(
     () => scene.hotspots.find((item) => item.id === selectedHotspotId) ?? scene.hotspots[0],
@@ -192,6 +194,8 @@ function App() {
     const handleOpen = () => {
       const instance = viewerRef.current
       if (!instance) return
+      const nextHome = instance.viewport.getHomeZoom() || 1
+      setHomeZoom(nextHome)
       instance.viewport.goHome(true)
       refreshMarkers()
     }
@@ -231,9 +235,17 @@ function App() {
     const nextScene = SLIDES.find((item) => item.id === nextSceneId)
     setSceneId(nextSceneId)
     setSelectedHotspotId(nextScene?.hotspots[0].id ?? SLIDES[0].hotspots[0].id)
+    setZoomLevel(1)
     setMarkerPositions({})
   }
 
+  const setFixedZoom = (nextZoomLevel: number) => {
+    const viewer = viewerRef.current
+    setZoomLevel(nextZoomLevel)
+    if (!viewer || !homeZoom) return
+    const center = viewer.viewport.getCenter()
+    viewer.viewport.zoomTo(homeZoom * nextZoomLevel, center, true)
+  }
   const focusHotspot = (hotspotId: string) => {
     const viewer = viewerRef.current
     const hotspot = scene.hotspots.find((item) => item.id === hotspotId)
@@ -302,6 +314,27 @@ function App() {
                 <div className="flex flex-wrap gap-2">
                   <button className="soft-btn" onClick={() => setRunning((value) => !value)} type="button">
                     {running ? <Pause size={16} /> : <Play size={16} />} {running ? 'Pausar' : 'Rodar'}
+                  </button>
+                  <button
+                    className={`soft-btn ${zoomLevel === 1 ? 'soft-btn-active' : ''}`}
+                    onClick={() => setFixedZoom(1)}
+                    type="button"
+                  >
+                    <ScanSearch size={16} /> 1x
+                  </button>
+                  <button
+                    className={`soft-btn ${zoomLevel === 1.5 ? 'soft-btn-active' : ''}`}
+                    onClick={() => setFixedZoom(1.5)}
+                    type="button"
+                  >
+                    <ScanSearch size={16} /> 1.5x
+                  </button>
+                  <button
+                    className={`soft-btn ${zoomLevel === 2 ? 'soft-btn-active' : ''}`}
+                    onClick={() => setFixedZoom(2)}
+                    type="button"
+                  >
+                    <ScanSearch size={16} /> 2x
                   </button>
                   <button className="soft-btn" onClick={() => setFocus((value) => Math.min(1, value + 0.08))} type="button">
                     <Focus size={16} /> Foco fino
