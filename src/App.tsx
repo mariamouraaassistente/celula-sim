@@ -219,7 +219,8 @@ function App() {
   useEffect(() => {
     const viewer = viewerRef.current
     if (!viewer || !homeZoom) return
-    viewer.viewport.zoomTo(homeZoom * zoom, viewer.viewport.getCenter(), true)
+    const nextZoom = Math.max(1, zoom)
+    viewer.viewport.zoomTo(homeZoom * nextZoom, viewer.viewport.getCenter(), true)
   }, [homeZoom, zoom])
 
   useEffect(() => {
@@ -242,6 +243,7 @@ function App() {
     const nextScene = SLIDES.find((item) => item.id === nextSceneId)
     setSceneId(nextSceneId)
     setSelectedHotspotId(nextScene?.hotspots[0].id ?? SLIDES[0].hotspots[0].id)
+    setZoom(1.35)
     setMarkerPositions({})
   }
 
@@ -374,7 +376,7 @@ function App() {
                     <RangeControl
                       label="Ampliação"
                       value={zoom}
-                      min={0.9}
+                      min={1}
                       max={3.2}
                       step={0.01}
                       icon={<ScanSearch size={14} />}
